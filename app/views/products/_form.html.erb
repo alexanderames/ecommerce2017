@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="form-group">
+    <%=f.select(:category_id, @categories.collect {|c| [c.name, c.id]}, { include_blank: "Select Category"})%>
+  </div>
+
+  <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
@@ -34,10 +38,6 @@
   <div class="form-group">
     <%= f.label :brand %>
     <%= f.text_field :brand %>
-  </div>
-
-  <div class="form-group">
-    <%=f.select(:category_id, @categories.collect {|c| [c.name, c.id]}, { include_blank: "Select Category"})%>
   </div>
 
   <div class="form-group">
