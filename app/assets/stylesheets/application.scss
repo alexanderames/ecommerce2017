@@ -23,3 +23,19 @@ p, li {
 h1, h2, h3, h4, h5, h6, .navbar-brand {
 	font-family: 'Raleway', sans-serif;
 }
+
+body {
+	background-image: url(marble.jpg);
+}
+
+.Add {
+	float:left !important;
+	background:transparent !important;
+}
+
+span.badge {
+  float: left !important;
+  margin-top: 10px;
+  margin-left: -10px;
+}
+

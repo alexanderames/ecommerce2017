@@ -3,15 +3,22 @@
 		<div class="col-md-4">
 			<div class="well center-it">
 				<p><%= image_tag product.image.url(:thumb) %></p>
-				<h3><%= product.name %></h3>
-				<p><%= number_to_currency product.price %></p>
-				<p><%= link_to product.brand, branding_path(brand: product.brand)%></p>
-				<p><%= link_to product.category.name, categorical_path(cat_id: product.category_id) %></p>
-				<p>
+					<p>
 					<a href="#" data-toggle="modal" data-target="#myModal_<%= product.id %>">
 						<span class="glyphicon glyphicon-plus"></span> Quick Info
 					</a>
 				</p>
+				<h3><%= product.name %></h3>
+				<p><%= number_to_currency product.price %></p>
+				<p><%= link_to product.brand, branding_path(brand: product.brand)%></p>
+				<p><%= link_to product.category.name, categorical_path(cat_id: product.category_id) %></p>
+				<%= form_tag add_to_cart_path do %>
+				  <%= hidden_field_tag :product_id, product.id %>
+				<button type="submit">
+   				<span class="glyphicon glyphicon-shopping-cart">
+				  <% end %>
+				  </span>
+				</button>
 			</div>
 		</div>
 		<!-- Modal -->
@@ -26,16 +33,6 @@
 			        <p><%= product.price %></p>
 			        <p><%= product.description %></p>
 			      </div>
-						<div class="modal-footer">
-						  <!-- Delete those "Save Changes" and "Close" buttons that were here -->
-						  <p>
-						  <%= form_tag add_to_cart_path do %>
-						    <%= hidden_field_tag :product_id, product.id %>
-						    <%= number_field_tag :quantity, nil, placeholder: "How many?" %>
-						    <%= submit_tag "Add to Cart", class: "btn btn-primary" %>
-						  <% end %>
-						  </p>
-						</div>
 			    </div>
 			  </div>
 			</div>

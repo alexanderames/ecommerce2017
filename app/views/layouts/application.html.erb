@@ -12,9 +12,14 @@
   <body>
   <!-- Navbar Section -->
   <% if user_signed_in? %>
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
       <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>          
+      </button>
         <%= link_to "My Store", root_path, class: "navbar-brand" %>
       </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -34,14 +39,14 @@
           <% @brands.each do |brand| %>
             <li><%= link_to brand, branding_path(brand: brand) %></li>
           <% end %>
-            <li><a href="all">All</a></li>
+            <li><%= link_to "All", root_path %></li>
         </ul>
       </li> 
       <!-- End Brands -->
       </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right nav-pills">
           <li><%= link_to current_user.email %></li>
-          <li><%= link_to "My Cart", view_order_path %></li>
+          <li role="presentation" class="active"><%= link_to "My Cart", view_order_path, class: "Add" %><span class="badge"><%= LineItem.count %></span></li>
           <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
         </ul>
@@ -49,12 +54,17 @@
     </div>
   </nav>
   <% else %>
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
       <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>          
+      </button>
         <%= link_to "My Store", root_path, class: "navbar-brand" %>
       </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="collapse navbar-collapse" id="navbar">
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "Sign Up", new_user_registration_path %></li>
           <li><%= link_to "Forgot Password", new_user_password_path %></li>
